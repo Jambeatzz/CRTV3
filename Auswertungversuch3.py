@@ -2,6 +2,8 @@ import pandas
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+##hier wurde als erstes die F(t) Plots aus den Messwerten erstellt
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def Fterstellung(data):
@@ -36,7 +38,7 @@ def Fterstellung(data):
         plt.savefig(f"/Users/jordihohmann/Desktop/V3 Auswertung/PicAll.png")
 
 
-
+##hier wurden die Experimentellen mit den theoretischen Kurven übereinandergelegt
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def Ftübereinanderlegung(data):
@@ -51,7 +53,7 @@ def Ftübereinanderlegung(data):
     KK2 = ll[5]
     KK3 = ll[7]
 
-    tau = (1.8*2)/(19.97/60)
+    tau = [(1.8*i)/(19.97/60) for i in range(3)]
     CA_0 = 0
     CA_inf = 0.05 
     W_0 = 0.09
@@ -75,7 +77,8 @@ def Ftübereinanderlegung(data):
         plt.savefig(f"/Users/jordihohmann/Desktop/V3 Auswertung/Picübermitvermeindlichentauaufreaktor2bezogen{i+1}.png")
 
 
-
+##in FTtauberechnung und der darauffolgenden Funktion NumericIntegration, 
+##wurden die Experimentellen, Realen Tau berechnet durch numerische integration
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def Fttauberechnung(data):
@@ -139,10 +142,10 @@ def numericintegration(Rrest, tK1):
     ]
 
     return unseretaussind
-Rrest, tk1 = Fttauberechnung(data)
+Rrest, tk1 = Fttauberechnung(data) 
 
 
-
+##hier wurden die berechneten Tau mit den Experimentellen, realen tau verglichen
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def TaukurvenzuBerechnetenvergleiche(data):
@@ -179,8 +182,10 @@ def TaukurvenzuBerechnetenvergleiche(data):
         plt.grid(True)
         plt.ylim(-0.1, 1.1) # Y-Achse von -0.1 bis 1.1 für bessere Sichtbarkeit von 0 und 1
         plt.savefig(f"/Users/jordihohmann/Desktop/V3 Auswertung/PicTauVerglTauberechnetzuTauexperimentell{i+1}.png")
-    
 
+
+
+##hier wurde bestimmt, wie genau die Experimentellen, realen tau an unsere Realen Kurven kommen
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def TauKurvenzuexpKurvenvergleiche(data):
@@ -219,6 +224,8 @@ def TauKurvenzuexpKurvenvergleiche(data):
         plt.savefig(f"/Users/jordihohmann/Desktop/V3 Auswertung/PicTauVerglMitExp(stimmt das tau mit dem überein?){i+1}.png")
 
 
+
+##Hier wurde die umsatzformel angewandt um den Theoretischen und Realen Umsatz aus unseren Tau zu bestimmen
 filepath = "/Users/jordihohmann/Desktop/V3 Auswertung/Versuch3.csv"
 data = pandas.read_csv(filepath, sep=";", skiprows=3, header=None)
 def Umsatzauswertung(data):
